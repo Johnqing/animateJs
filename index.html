@@ -10,7 +10,7 @@
 *{margin: 0;padding: 0}
 #move{
   width: 100px;
-  height: 100px;
+	height: 100px;
 	background: #f00;
 	position: absolute;
 	top:0;
@@ -299,13 +299,13 @@
 		 */
 		var Animate = function(target, opts){
 			this.target = target;
-            this.begin = parseFloat(n.getCoords(target)[opts.field]);
-            this.move = opts.move;
-            this.duration = opts.duration || 500;
-            this.field = opts.field,
-            this.speed = opts.speed;
-            this.onEnd = opts.onEnd ;
-            this.tween = tween[opts.ease];
+			this.begin = parseFloat(n.getCoords(target)[opts.field]);
+			this.move = opts.move;
+			this.duration = opts.duration;
+			this.field = opts.field,
+			this.speed = opts.speed;
+			this.onEnd = opts.onEnd ;
+			this.tween = tween[opts.ease];
 
 			this.init();
 		}
@@ -320,19 +320,19 @@
 					obj = self.target;
 				(function(){
 					setTimeout(function(){
-		                var newTime = new Date().getTime(),//当前帧开始的时间
-		                timestamp = newTime - self.startTime;//过去时间
-		                var delta = self.tween(timestamp / self.duration);
+						var newTime = new Date().getTime(),//当前帧开始的时间
+						timestamp = newTime - self.startTime;//过去时间
+						var delta = self.tween(timestamp / self.duration);
 
-		                obj.style[self.field] = Math.ceil(self.begin + delta * self.move) + "px";
+						obj.style[self.field] = Math.ceil(self.begin + delta * self.move) + "px";
 
-		                if(self.duration <= timestamp){
-		                    obj.style[self.field] = self.end + "px";
-		                    self.onEnd();
-		                }else{
-		                    setTimeout(arguments.callee,1000/self.speed);
-		                }
-                	}, 1000/self.speed);
+						if(self.duration <= timestamp){
+							obj.style[self.field] = self.end + "px";
+							self.onEnd();
+						}else{
+							setTimeout(arguments.callee,1000/self.speed);
+						}
+					}, 1000/self.speed);
 				})();
                 
             }
