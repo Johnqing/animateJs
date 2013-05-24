@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title></title>
-<script src="SlideTrans.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -291,16 +290,16 @@
 			this.begin = parseFloat(n.getCoords(target)[opts.field]);
 			this.move = opts.move;
 			this.duration = opts.duration;
-			this.field = opts.field,
+			this.field = opts.field;
 			this.speed = opts.speed;
-			this.onEnd = opts.onEnd ;
+			this.onEnd = opts.onEnd;
 			this.tween = tween[opts.ease];
 
 			this.init();
 		}
 		Animate.prototype = {
 			init: function(){
-	            this.end = this.begin + this.move;//结束位置
+	            		this.end = this.begin + this.move;//结束位置
 				this.startTime = new Date().getTime();//开始执行的时间
 				this.go();
 			},
